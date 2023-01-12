@@ -1,0 +1,289 @@
+algoritmo "mercadinho"
+var
+   produto : vetor[1..5] de caractere
+   quantidade, codigo : vetor[1..5] de inteiro
+   preco : vetor [1..5] de real
+   venda_cupom: vetor[1..10,1..5] de caracter
+   opcao: caracter
+   verifica, cont, conti, contj, quant: inteiro
+   valor_do_produto : real
+
+procedimento menu()
+inicio
+   escreval ("- - - - - - - - - - - - - - -")
+   escreval ("          AMERICANAS         ")
+   escreval ("- - - - - - - - - - - - - - -")
+   escreval ()
+   repita
+      escreval ("[ 1 ] CADASTRAR PRODUTOS ")
+      escreval ("[ 2 ] RELATÓRIO ")
+      escreval ("[ 3 ] VENDA DE PRODUTO ")
+      leia (opcao)
+
+      se ((opcao <> "1") e (opcao <> "2") e (opcao <> "3")) entao
+         escreval("Opção inválida!")
+      fimse
+
+   ate ((opcao = "1") ou (opcao = "2") ou (opcao = "3"))
+
+   escolha opcao
+   caso "1
+      cadastro()
+   caso "2"
+      relatorio()
+   caso "3"
+      venda()
+   fimescolha
+
+
+fimprocedimento
+
+procedimento mostra_estoque()
+var
+   h : inteiro
+inicio
+   escreval ("CÓDIGO |  PRODUTO  |   VALOR  | ESTOQUE ")
+   escreval ("- - - -|- - - - - -|- - - - - |- - - - -")
+   para h:= 1 ate 5 faca
+      escreval (codigo[h]:5 ,"  |  ", produto[h]:8,"  |  ", preco[h]:4:2,"   |  ", quantidade[h]:5 )
+   fimpara
+
+fimprocedimento
+
+
+procedimento cadastro()
+var
+   i, j: inteiro
+inicio
+   se verifica > 0 entao
+      escreval ("Produtos já cadastrados!")
+      menu()
+   senao
+      para i := 1 ate 5 faca
+         limpatela
+
+         mostra_estoque()
+
+         escreval()
+         escreval ("- - - - - - - - - - - - - - -")
+         escreval ("     CADASTRO DE PRODUTOS    ")
+         escreval ("- - - - - - - - - - - - - - -")
+         escreval()
+
+         enquanto (codigo[i] <= 0) faca
+            escreval("Digite o código do produto",i,": ")
+            leia(codigo[i])
+
+            para j := 1 ate 5 faca
+               se (j <> i) e (codigo[i] = codigo[j]) entao
+                  codigo[i] := 0
+               fimse
+            fimpara
+
+            se (codigo[i] <= 0) entao
+               escreval("ERRO! Código menor/igual a zero ou já existente!")
+            fimse
+         fimenquanto
+
+         escreval("Digite o nome do produto",i,": ")
+         leia(produto[i])
+         enquanto (quantidade[i] <= 0) faca
+            escreval("Digite a quantidade em estoque do produto",i,": ")
+            leia(quantidade[i])
+
+            se (quantidade[i] <= 0) entao
+               escreval("ERRO! Quantidade não pode ser 0 ou menos!")
+            fimse
+         fimenquanto
+
+         enquanto (preco[i] <= 0) faca
+            escreval("Digite o preco do produto",i,": ")
+            leia(preco[i])
+
+            se (preco[i] <= 0) entao
+               escreval("ERRO! Preço não pode ser 0 ou menos!")
+            fimse
+         fimenquanto
+      fimpara
+      verifica:= verifica + 1
+      limpatela
+      mostra_estoque()
+      menu()
+
+   fimse
+fimprocedimento
+
+
+
+procedimento relatorio()
+var
+   i: inteiro
+inicio
+   limpatela
+   escreval ("- - - - - - - - - - - - - - -")
+   escreval ("           RELATÓRIO         ")
+   escreval ("- - - - - - - - - - - - - - -")
+   escreval ()
+
+   mostra_estoque()
+
+   menu()
+fimprocedimento
+
+
+
+procedimento venda()
+var
+   cod,saida,i, cod_existe: inteiro
+inicio
+   saida:= 1
+   enquanto (saida <> 2) faca
+      limpatela
+
+      se (codigo[1] = 0) entao
+         escreval ("Não foi cadastrado nenhum produto ainda!")
+         timer 800
+         timer 0
+         menu()
+      fimse
+
+      mostra_estoque()
+      escreval()
+
+      cod_existe:= 0
+      enquanto (cod_existe <> 1)  faca
+         escreval("Digite o código do produto: ")
+         leia (cod)
+
+         para i:=1 ate 5 faca
+            se (cod = codigo[i]) e (quantidade[i] > 0) entao
+               cont:= i
+               cod_existe := 1
+               valor_do_produto := calcula()
+            fimse
+         fimpara
+         se (cont <> 0) entao
+            se (quantidade[cont] = 0) entao
+               escreval("ERRO! Não é possível escolher produto pois está zerado em estoque!")
+            fimse
+         fimse
+
+         se (cod_existe = 0) entao
+            escreval("Código não cadastrado!")
+         fimse
+
+      fimenquanto
+
+      registra_no_cupom()
+
+      repita
+         escreval ("Deseja inserir mais um item na venda?")
+         escreval ("[ 1 ] SIM")
+         escreval ("[ 2 ] NÃO")
+         leia (saida)
+
+         se ((saida <> 1) e (saida  <> 2)) entao
+            escreval ("Resposta inválida!")
+         fimse
+      ate ((saida = 1) ou (saida = 2))
+
+   fimenquanto
+   limpatela
+   escreval()
+   escreval()
+   escreval()
+   escreval()
+   timer 600
+   escreva("             CALCULANDO  ")
+   escreva(" . ")
+   escreva(" . ")
+   escreva(" . ")
+   escreva(" . ")
+   escreva(" . ")
+   escreva(" . ")
+   escreval()
+   timer 0
+
+   cupom()
+fimprocedimento
+
+procedimento registra_no_cupom()
+inicio
+   quantidade[cont] := quantidade[cont] - int(quant)
+
+   //desconta quantidade comprada do estoque
+
+   conti:= conti + 1
+   contj:= 1
+   venda_cupom[conti,contj]:= numpcarac(codigo[cont])
+   contj:= contj + 1
+   venda_cupom[conti,contj]:= produto[cont]
+   contj:= contj + 1
+   venda_cupom[conti,contj]:=numpcarac(preco[cont])
+   contj:= contj + 1
+   venda_cupom[conti,contj]:= numpcarac(quant)
+   contj:= contj + 1
+   venda_cupom[conti,contj]:= numpcarac(valor_do_produto)
+
+   //registra na matriz a venda para aparecer no cupom
+
+fimprocedimento
+
+
+
+funcao calcula(): real
+var
+   i : inteiro
+inicio
+
+   repita
+      escreva ("Quantidade: ")
+      leia (quant)
+      se (quantidade[cont] < quant) entao
+         escreval("Quantidade insuficiente no estoque!")
+      fimse
+      se (quant <= 0) entao
+         escreval("A quantidade não pode ser zero ou menos!")
+      fimse
+   ate  (quant <= quantidade[cont]) e (quant > 0)
+
+   retorne (quant * preco[cont])
+
+fimfuncao
+
+
+procedimento cupom()
+var
+   i, j: inteiro
+   total: real
+inicio
+   limpatela
+   escreval ("        C U P O M   F I S C A L          ")
+   escreval ("CÓD.   PROD.      VAL UNI.   QUANT.   TOTAL ")
+   escreval ()
+   escreval ()
+
+   para i:= 1 ate conti faca
+      escreval("   ", venda_cupom[i, 1], "   ", venda_cupom[i, 2]:10, "     ", venda_cupom[i, 3]:7, "      ", venda_cupom[i, 4]:5, "    ", venda_cupom[i, 5]:7)
+      total := total + caracpnum(venda_cupom[i, 5])
+   fimpara
+   escreval("________________________________________________")
+   escreval("                               TOTAL: R$", total)
+
+   timer 6000
+   timer 0
+   limpatela
+
+
+   para i:= 1 ate conti faca
+      para j:=1 ate conti faca
+         venda_cupom[i,j]:= ""
+      fimpara
+   fimpara
+   total:= 0    //zerar a matriz erro
+   menu()
+fimprocedimento
+
+inicio
+   menu()
+fimalgoritmo
