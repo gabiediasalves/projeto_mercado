@@ -18,14 +18,13 @@
         <img src="logo.png" alt="logo">
 
         <div class="opcoes">
-            <div class="cadastro" id="opcao">Cadastro</div>
-            <div class="relatorio" id="opcao">Relatório</div>
+            <div class="cadastro" id="opcao" onclick="mostra_template_cadastro()">Cadastro</div>
+            <div class="relatorio" id="opcao" onclick="mostra_template_relatorio()">Relatório</div>
             <div class="venda" id="opcao">Venda</div>
         </div>
-
     </nav>
 
-    <div class="cadastro">
+    <div class="template_cadastro">
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">Código:</span>
             <input type="number" class="form-control" aria-label="Sizing example input"
@@ -49,8 +48,34 @@
 
 
         <button type="button" class="btn btn-success" onclick="cadastrar()">Success</button>
-
     </div>
+
+
+    <div class="template_relatorio">
+        <table class="table">
+            <tr>
+                <th>Código</th>
+                <th>Produto</th>
+                <th>Valor unitário</th>
+                <th>Estoque</th>
+            </tr>
+        </table>
+    </div>
+
+
+        <div class="template_venda">
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01">Código</label>
+                <select class="form-select" id="inputGroupSelect01">
+                  <option selected>Escolha um código</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+        </div>
+
+
 
 
     <script src="script.js"></script>

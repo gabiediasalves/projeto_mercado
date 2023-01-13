@@ -8,10 +8,10 @@ nav {
     padding: 20px;
     box-shadow: 2px 5px 5px rgb(223, 211, 211);
     display: flex;
+    margin-bottom: 50px;
 }
 
 .opcoes {
-
     display: flex;
 }
 
@@ -27,8 +27,28 @@ img {
     width: 100px;
 }
 
-.cadastro {
+.template_cadastro {
     width: 600px;
     padding: 30px;
     margin: auto;
+    display: none;
 }
+
+.template_relatorio{
+    
+    margin: auto;
+    padding: 20px;
+    box-shadow: 2px 5px 5px rgb(178, 169, 169);
+    width: 800px;
+    text-align: center;
+     background-color: rgb(252, 252, 255); 
+    font-size: 20px;
+}
+
+ .template_relatorio{
+    display: none;
+ }
+
+ .template_venda{
+    display: none;
+ }
