@@ -1,12 +1,25 @@
 var lista = []
 var template_cadastro = document.querySelector('.template_cadastro')
+var carouselExampleIndicators = document.querySelector('#carouselExampleIndicators')
+
+function mostra_template_home() {
+    carouselExampleIndicators.style.display = 'block'
+    template_relatorio.style.display = 'none'
+    template_venda.style.display = 'none'
+    template_cadastro.style.display = 'none'
+}
+
 
 function mostra_template_cadastro() {
     if (template_cadastro.style.display === 'block') {
         template_cadastro.style.display = 'none'
+        carouselExampleIndicators.style.display = 'block'
     } else {
         template_cadastro.style.display = 'block'
         template_relatorio.style.display = 'none'
+        template_venda.style.display = 'none'
+        carouselExampleIndicators.style.display = 'none'
+
     }
 }
 
@@ -14,9 +27,26 @@ var template_relatorio = document.querySelector('.template_relatorio')
 function mostra_template_relatorio() {
     if (template_relatorio.style.display === 'block') {
         template_relatorio.style.display = 'none'
+        carouselExampleIndicators.style.display = 'block'
     } else {
         template_relatorio.style.display = 'block'
         template_cadastro.style.display = 'none'
+        template_venda.style.display = 'none'
+        carouselExampleIndicators.style.display = 'none'
+
+    }
+}
+
+var template_venda = document.querySelector('.template_venda')
+function mostra_template_venda() {
+    if (template_venda.style.display === 'block') {
+        template_venda.style.display = 'none'
+        carouselExampleIndicators.style.display = 'block'
+    } else {
+        template_venda.style.display = 'block'
+        template_relatorio.style.display = 'none'
+        template_cadastro.style.display = 'none'
+        carouselExampleIndicators.style.display = 'none'
     }
 }
 
@@ -25,6 +55,7 @@ function cadastrar() {
     var produto = document.querySelector("#produto").value
     var valuni = document.querySelector("#valuni").value
     var estoque = document.querySelector("#estoque").value
+    var mostra_produto_venda = document.querySelector('#mostra_produto_venda')
     lista.push([cod, produto, valuni, estoque])
 
 
@@ -45,8 +76,16 @@ function cadastrar() {
         cell3.innerHTML = `${lista[lista.length - 1][2]}`
         cell4.innerHTML = `${lista[lista.length - 1][3]}`
 
+        var x = document.getElementById("options_venda")
+        var option = document.createElement("option")
+        option.text = `${lista[lista.length - 1][0]}`
+        option.value = `${lista[lista.length - 1][0]}`
+        x.add(option)
+
+
+        //mostra_produto_venda.innerHTML = 
     }
-console.log(lista)
+
 
 
 }
@@ -79,5 +118,7 @@ var valida_codigo = (lista) => {
     }
 }
 
+
+var options_venda = document.querySelector("#options_venda")
 
 

@@ -15,14 +15,49 @@
 
 
     <nav>
-        <img src="logo.png" alt="logo">
+        <img src="logo.png" alt="logo" id="logo">
 
         <div class="opcoes">
+            <div class="home" id="opcao" onclick="mostra_template_home()">Home</div>
             <div class="cadastro" id="opcao" onclick="mostra_template_cadastro()">Cadastro</div>
             <div class="relatorio" id="opcao" onclick="mostra_template_relatorio()">Relatório</div>
-            <div class="venda" id="opcao">Venda</div>
+            <div class="venda" id="opcao" onclick="mostra_template_venda()">Venda</div>
         </div>
     </nav>
+
+
+    <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="carrossel01.png" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="carrossel01.png" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="carrossel01.png" class="d-block w-100">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
 
     <div class="template_cadastro">
         <div class="input-group mb-3">
@@ -47,7 +82,7 @@
         </div>
 
 
-        <button type="button" class="btn btn-success" onclick="cadastrar()">Success</button>
+        <button type="button" class="btn btn-success" onclick="cadastrar()">Cadastrar</button>
     </div>
 
 
@@ -63,19 +98,29 @@
     </div>
 
 
-        <div class="template_venda">
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="inputGroupSelect01">Código</label>
-                <select class="form-select" id="inputGroupSelect01">
-                  <option selected>Escolha um código</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
+    <div class="template_venda">
+
+        <h2>Venda</h2>
+
+       <div id="mostra_produto_venda"></div>
+
+
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Código</label>
+            <select class="form-select" id="options_venda">
+                <option selected>Escolha o código do produto: </option>
+            </select>
         </div>
 
 
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Quant. a ser comprado:</span>
+            <input type="number" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" id="">
+        </div>
+
+
+    </div>
 
 
     <script src="script.js"></script>
