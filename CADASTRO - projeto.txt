@@ -10,9 +10,9 @@ var
 
 procedimento menu()
 inicio
-   escreval ("- - - - - - - - - - - - - - -")
-   escreval ("          AMERICANAS         ")
-   escreval ("- - - - - - - - - - - - - - -")
+   escreval ("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
+   escreval ("                        AMERICANAS                         ")
+   escreval ("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
    escreval ()
    repita
       escreval ("[ 1 ] CADASTRAR PRODUTOS ")
@@ -42,8 +42,8 @@ procedimento mostra_estoque()
 var
    h : inteiro
 inicio
-   escreval ("CÓDIGO |  PRODUTO  |   VALOR  | ESTOQUE ")
-   escreval ("- - - -|- - - - - -|- - - - - |- - - - -")
+   escreval ("CÓDIGO |  PRODUTO  |    VALOR  |  ESTOQUE  ")
+   escreval ("- - - -|- - - - - -|- - - - - -|- - - - - -")
    para h:= 1 ate 5 faca
       escreval (codigo[h]:5 ,"  |  ", produto[h]:8,"  |  ", preco[h]:4:2,"   |  ", quantidade[h]:5 )
    fimpara
@@ -65,9 +65,9 @@ inicio
          mostra_estoque()
 
          escreval()
-         escreval ("- - - - - - - - - - - - - - -")
-         escreval ("     CADASTRO DE PRODUTOS    ")
-         escreval ("- - - - - - - - - - - - - - -")
+         escreval ("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
+         escreval ("                  CADASTRO DE PRODUTOS                     ")
+         escreval ("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
          escreval()
 
          enquanto (codigo[i] <= 0) faca
@@ -120,9 +120,9 @@ var
    i: inteiro
 inicio
    limpatela
-   escreval ("- - - - - - - - - - - - - - -")
-   escreval ("           RELATÓRIO         ")
-   escreval ("- - - - - - - - - - - - - - -")
+   escreval ("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
+   escreval ("                       RELATÓRIO                           ")
+   escreval ("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
    escreval ()
 
    mostra_estoque()
@@ -267,8 +267,8 @@ inicio
       escreval("   ", venda_cupom[i, 1], "   ", venda_cupom[i, 2]:10, "     ", venda_cupom[i, 3]:7, "      ", venda_cupom[i, 4]:5, "    ", venda_cupom[i, 5]:7)
       total := total + caracpnum(venda_cupom[i, 5])
    fimpara
-   escreval("________________________________________________")
-   escreval("                               TOTAL: R$", total)
+   escreval("____________________________________________________")
+   escreval("                                    TOTAL: R$", total)
 
    timer 6000
    timer 0
@@ -281,6 +281,7 @@ inicio
       fimpara
    fimpara
    total:= 0    //zerar a matriz erro
+   conti := 0
    menu()
 fimprocedimento
 

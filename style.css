@@ -5,7 +5,6 @@
 }
 
 nav {
-    padding: 10px;
     box-shadow: 2px 5px 5px rgb(223, 211, 211);
     display: flex;
     margin-bottom: 30px;
@@ -36,14 +35,20 @@ nav {
     margin-right: 520px;
 }
 
+#title{
+    color: blue;
+    font-weight: 700;
+    text-align: center;
+    padding: 30px;
+}
+
 .template_cadastro {
     width: 600px;
-    padding: 30px;
     margin: auto;
     display: none;
 }
 
-.template_relatorio{
+#borda_relatorio{
     margin: auto;
     padding: 20px;
     box-shadow: 2px 5px 5px rgb(178, 169, 169);
@@ -60,8 +65,7 @@ nav {
  .template_venda{
     display: none;
     margin: auto;
-    padding: 20px;
-    width: 800px;
+    width: 600px;
  }
 
 .carousel-inner{
