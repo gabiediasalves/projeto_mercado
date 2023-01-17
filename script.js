@@ -92,7 +92,6 @@ var valida_input = (s) => {
     }
 };
 
-
 var valida_codigo = (lista) => {
     var codi = []
     for (let i = 0; i < lista.length; i++) {
@@ -110,29 +109,46 @@ var valida_codigo = (lista) => {
     }
 }
 
-
-var options_venda = document.querySelector("#options_venda")
-// function venda() {
-//     var mostra_produto_venda = document.querySelector('#mostra_produto_venda')
-
-
-//     for (let i = 1; i < x.length; i++) {
-//         if (x.option[i].text){
-//             mostra_produto_venda.innerHTML = `${x.option[i].text}` 
-
-//         }
-//     }
-// }
-
-function myFunction() {
+var mostra_produto_venda = () => {
     var prod_select = x.selectedIndex;
+    document.getElementById("dados_produto")
 
-    for (let i = 1; i < lista.length; i++) {
-        if (x.options[i].text == lista[i][0]) {
-            console.log("achamo familia")
+    for (let i = 0; i < lista.length; i++) {
+        if (prod_select == lista[i][0]) {
+            dados_produto.innerHTML = `Código:${lista[i][0]} - Produto:${lista[i][1]} - Valor unitário:${lista[i][2]} - Estoque:${lista[i][3]}`
         }
-
     }
-    document.getElementById("dados_produto").innerHTML = x.options[prod_select].text;
 }
 
+var sacola = []
+function venda() {
+    var prod_select = x.selectedIndex;
+    var estoque_venda = document.querySelector('#estoque_venda').value
+
+    for (let i = 0; i < lista.length; i++) {
+        if (prod_select == lista[i][0]) {
+
+            if (estoque_venda <= lista[i][3] && estoque_venda > 0) {
+                alert("Produto adicionado na sacola!")
+
+                sacola.push(lista[i][0], lista[i][1], lista[i][2], lista[i][3], estoque_venda * lista[i][2])
+                lista[i][3] = lista[i][3] - estoque_venda
+
+
+                var table = document.querySelector('.table_venda')
+                var row = table.insertRow(1)
+                var cell1 = row.insertCell(0)
+                var cell2 = row.insertCell(1)
+                var cell3 = row.insertCell(2)
+        
+                cell1.innerHTML = `${lista[lista.length - 1][1]}`
+                cell2.innerHTML = ``
+                cell3.innerHTML = ``
+
+
+            } else {
+                alert("Estoque insuficiente ou não informado!")
+            }
+        }
+    }
+}

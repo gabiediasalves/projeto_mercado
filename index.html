@@ -22,6 +22,7 @@
             <div class="cadastro" id="opcao" onclick="mostra_template_cadastro()">Cadastro</div>
             <div class="relatorio" id="opcao" onclick="mostra_template_relatorio()">Relatório</div>
             <div class="venda" id="opcao" onclick="mostra_template_venda()">Venda</div>
+            <div class="sacola" id="opcao" onclick="">Sacola</div>
         </div>
     </nav>
 
@@ -97,7 +98,7 @@
             <div id="title">Relatório</div>
         </h2>
 
-        <div id="borda_relatorio">
+        <div id="borda">
             <table class="table">
                 <tr>
                     <th>Código</th>
@@ -114,13 +115,14 @@
         <h2>
             <div id="title">Venda</div>
         </h2>
-
-        <div id="mostra_produto_venda"></div>
-        <p id="dados_produto"></p>
+        <p>Informações do produto selecionado:</p>
+        <div class="alert alert-primary" role="alert">
+            <p id="dados_produto"></p>
+        </div>
 
         <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">Código</label>
-            <select class="form-select" id="options_venda" onchange="myFunction()">
+            <select class="form-select" id="options_venda" onchange="mostra_produto_venda()">
                 <option selected>Escolha o código do produto: </option>
             </select>
         </div>
@@ -129,13 +131,37 @@
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">Quantidade:</span>
             <input type="number" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default" id="">
+                aria-describedby="inputGroup-sizing-default" id="estoque_venda">
         </div>
 
         <button type="button" class="btn btn-primary" onclick="venda()">Comprar</button>
 
     </div>
+
+
+    <div class="template_sacola">
+        <h2><div id="title">Itens do Carrinho</div></h2>
+
+        <div id="borda_venda">
+            <!-- <div id="flex">
+            <img src="sacola.png" style="width: 40px; height: 50px; margin-left: 20px;">
+            <h3><div id="title_sacola">Nome do produto</div></h3>
+        </div>
+        <p style="color: grey; font-size: 16px;margin-left: 20px;">Código: 23</p>
+        <div id="flex_descr">
+            <p>Qnt.: 1</p>
+            <p>Val uni: R$100</p>
+            <p style="color: rgb(0, 0, 0);">R$100</p>
+        </div>
+        </div> -->
+        <table class="table_venda">
+            <tr>
+            
+            </tr>
+        </table>
     </div>
+
+
 
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
