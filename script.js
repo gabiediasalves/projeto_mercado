@@ -1,6 +1,7 @@
 var lista = []
 var template_cadastro = document.querySelector('.template_cadastro')
 var carouselExampleIndicators = document.querySelector('#carouselExampleIndicators')
+var x = document.getElementById("options_venda")
 
 function mostra_template_home() {
     carouselExampleIndicators.style.display = 'block'
@@ -55,9 +56,7 @@ function cadastrar() {
     var produto = document.querySelector("#produto").value
     var valuni = document.querySelector("#valuni").value
     var estoque = document.querySelector("#estoque").value
-    var mostra_produto_venda = document.querySelector('#mostra_produto_venda')
     lista.push([cod, produto, valuni, estoque])
-
 
     if (valida_codigo(lista)) {
         alert("Código inválido!")
@@ -76,18 +75,11 @@ function cadastrar() {
         cell3.innerHTML = `${lista[lista.length - 1][2]}`
         cell4.innerHTML = `${lista[lista.length - 1][3]}`
 
-        var x = document.getElementById("options_venda")
         var option = document.createElement("option")
         option.text = `${lista[lista.length - 1][0]}`
         option.value = `${lista[lista.length - 1][0]}`
         x.add(option)
-
-
-        //mostra_produto_venda.innerHTML = 
     }
-
-
-
 }
 
 var valida_input = (s) => {
@@ -120,5 +112,27 @@ var valida_codigo = (lista) => {
 
 
 var options_venda = document.querySelector("#options_venda")
+// function venda() {
+//     var mostra_produto_venda = document.querySelector('#mostra_produto_venda')
 
+
+//     for (let i = 1; i < x.length; i++) {
+//         if (x.option[i].text){
+//             mostra_produto_venda.innerHTML = `${x.option[i].text}` 
+
+//         }
+//     }
+// }
+
+function myFunction() {
+    var prod_select = x.selectedIndex;
+
+    for (let i = 1; i < lista.length; i++) {
+        if (x.options[i].text == lista[i][0]) {
+            console.log("achamo familia")
+        }
+
+    }
+    document.getElementById("dados_produto").innerHTML = x.options[prod_select].text;
+}
 

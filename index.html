@@ -116,22 +116,23 @@
         </h2>
 
         <div id="mostra_produto_venda"></div>
-
+        <p id="dados_produto"></p>
 
         <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">Código</label>
-            <select class="form-select" id="options_venda">
+            <select class="form-select" id="options_venda" onchange="myFunction()">
                 <option selected>Escolha o código do produto: </option>
             </select>
         </div>
 
 
         <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Quant. a ser comprado:</span>
+            <span class="input-group-text" id="inputGroup-sizing-default">Quantidade:</span>
             <input type="number" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" id="">
         </div>
 
+        <button type="button" class="btn btn-primary" onclick="venda()">Comprar</button>
 
     </div>
     </div>
