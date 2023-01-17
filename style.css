@@ -74,7 +74,7 @@ nav {
 }
 
 #carouselExampleIndicators{
-    display: none;
+    display: block;
 }
 
 #borda_venda{
@@ -107,4 +107,8 @@ nav {
     color: blue;
     font-weight: 700;
     padding: 12px;
+}
+
+.template_sacola{
+    display: none;
 }
