@@ -2,6 +2,8 @@ var lista = []
 var template_cadastro = document.querySelector('.template_cadastro')
 var carouselExampleIndicators = document.querySelector('#carouselExampleIndicators')
 var x = document.getElementById("options_venda")
+var sacola = []
+
 
 function mostra_template_home() {
     carouselExampleIndicators.style.display = 'block'
@@ -64,6 +66,28 @@ function mostra_template_sacola() {
         template_cadastro.style.display = 'none'
         template_venda.style.display = 'none'
         carouselExampleIndicators.style.display = 'none'
+
+        
+        for (let i = 0; i < sacola.length; i++) {
+            var table_t = document.querySelector('.table_venda')
+            var row = table_t.insertRow(1)
+            var cell1 = row.insertCell(0)
+            var cell2 = row.insertCell(1)
+            var cell3 = row.insertCell(2)
+            cell1.innerHTML = `Qnt.${salva_este[i]}`
+            cell2.innerHTML = `Uni R$${sacola[i][2]}`
+            cell3.innerHTML = ` - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Total R$${sacola[i][4]}`
+
+            var row = table_t.insertRow(1)
+            var cell1 = row.insertCell(0)
+            var cell2 = row.insertCell(1)
+            var cell3 = row.insertCell(2)
+            cell1.innerHTML = `Produto ${sacola[i][1]}`
+            cell2.innerHTML = ``
+            cell3.innerHTML = ``
+
+
+        }
     }
 }
 
@@ -97,7 +121,7 @@ function cadastrar() {
         x.add(option)
     }
 
-    console.log(lista)
+
 
 }
 
@@ -139,46 +163,38 @@ var mostra_produto_venda = () => {
     }
 }
 
+var salva_este = []
+
 var total = 0
-var total_venda = document.querySelector('.total_venda')
-var sacola = []
-var cont = 0
 function venda() {
-    var prod_select = x.selectedIndex;
+    var total_venda = document.querySelector('.total_venda')
     var estoque_venda = document.querySelector('#estoque_venda').value
+    var prod_select = x.selectedIndex;
+    var item_numeric = 0
+    var prod_select_numeric = 0
 
     for (let i = 0; i < lista.length; i++) {
-        if (prod_select == lista[i][0]) {
+        item_numeric = parseInt(lista[i][0])
+        prod_select_numeric = parseInt(prod_select)
+        if (!(item_numeric !== prod_select_numeric)) {
             if (estoque_venda <= lista[i][3] && estoque_venda > 0) {
                 alert("Produto adicionado na sacola!")
+                salva_este.push(estoque_venda)
                 sacola.push([lista[i][0], lista[i][1], lista[i][2], lista[i][3], estoque_venda * lista[i][2]])
                 lista[i][3] = lista[i][3] - estoque_venda
                 total += sacola[i][4]
                 total_venda.innerHTML = `${total}`
+                console.log(sacola)
+          
             } else {
                 alert("Estoque insuficiente ou não informado!")
             }
         }
     }
 
-    var table_t = document.querySelector('.table_venda')
-
-    var row = table_t.insertRow(1)
-    var cell1 = row.insertCell(0)
-    var cell2 = row.insertCell(1)
-    var cell3 = row.insertCell(2)
-    cell1.innerHTML = `Qnt.${estoque_venda}`
-    cell2.innerHTML = `Uni R$${sacola[cont][2]}`
-    cell3.innerHTML = ` - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Total R$${sacola[cont][4]}`
-
-    var row = table_t.insertRow(1)
-    var cell1 = row.insertCell(0)
-    var cell2 = row.insertCell(1)
-    var cell3 = row.insertCell(2)
-    cell1.innerHTML = `Produto ${sacola[cont][1]}`
-    cell2.innerHTML = ``
-    cell3.innerHTML = ``
-    cont++
-
 }
+
+
+
+
 
