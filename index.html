@@ -13,7 +13,6 @@
 
 <body>
 
-
     <nav>
         <img src="logo.png" alt="logo" id="logo">
 
@@ -22,7 +21,7 @@
             <div class="cadastro" id="opcao" onclick="mostra_template_cadastro()">Cadastro</div>
             <div class="relatorio" id="opcao" onclick="mostra_template_relatorio()">Relatório</div>
             <div class="venda" id="opcao" onclick="mostra_template_venda()">Venda</div>
-            <div class="sacola" id="opcao" onclick="mostra_template_sacola()">Sacola</div>
+           
         </div>
     </nav>
 
@@ -61,8 +60,6 @@
 
 
     <div class="template_cadastro">
-
-
         <h2>
             <div id="title">Cadastro</div>
         </h2>
@@ -134,7 +131,8 @@
                 aria-describedby="inputGroup-sizing-default" id="estoque_venda">
         </div>
 
-        <button type="button" class="btn btn-primary" onclick="venda()">Comprar</button>
+        <button type="button" class="btn btn-success" onclick="venda()">Comprar</button>
+        <div type="button" class="btn btn-primary" onclick="mostra_template_sacola()">Finalizar compra</div>
 
     </div>
 
@@ -143,17 +141,6 @@
         <h2><div id="title">Itens do Carrinho</div></h2>
 
         <div id="borda_venda">
-            <!-- <div id="flex">
-            <img src="sacola.png" style="width: 40px; height: 50px; margin-left: 20px;">
-            <h3><div id="title_sacola">Nome do produto</div></h3>
-        </div>
-        <p style="color: grey; font-size: 16px;margin-left: 20px;">Código: 23</p>
-        <div id="flex_descr">
-            <p>Qnt.: 1</p>
-            <p>Val uni: R$100</p>
-            <p style="color: rgb(0, 0, 0);">R$100</p>
-        </div>
-        </div> -->
         <table class="table_venda">
             <tr>
         

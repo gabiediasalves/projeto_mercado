@@ -14,7 +14,7 @@ nav {
     display: flex;
     font-weight: 700;
     color: #2c3e50;
-   
+
 }
 
 #opcao {
@@ -25,9 +25,9 @@ nav {
 
 }
 
-#opcao:hover{
+#opcao:hover {
     color: blue;
-  }
+}
 
 #logo {
     width: 150px;
@@ -35,7 +35,7 @@ nav {
     margin-right: 520px;
 }
 
-#title{
+#title {
     color: blue;
     font-weight: 700;
     text-align: center;
@@ -48,53 +48,51 @@ nav {
     display: none;
 }
 
-#borda{
+#borda {
     margin: auto;
     padding: 20px;
     box-shadow: 2px 5px 5px rgb(178, 169, 169);
     width: 800px;
     text-align: center;
-     background-color: rgb(252, 252, 255); 
+    background-color: rgb(252, 252, 255);
     font-size: 20px;
 }
 
- .template_relatorio{
+.template_relatorio {
     display: none;
- }
+}
 
- .template_venda{
+.template_venda {
     display: none;
     margin: auto;
     width: 600px;
- }
+}
 
-.carousel-inner{
+.carousel-inner {
     margin-bottom: 20px;
     margin-top: -20px;
 }
 
-#carouselExampleIndicators{
+#carouselExampleIndicators {
     display: block;
 }
 
-#borda_venda{
+#borda_venda {
     margin: auto;
     padding: 20px;
     box-shadow: 2px 5px 5px rgb(178, 169, 169);
     width: 800px;
-  
-     background-color: rgb(252, 252, 255); 
+
+    background-color: rgb(252, 252, 255);
     font-size: 20px;
 }
 
-
-
-#flex{
+#flex {
     display: flex;
     justify-content: flex-start;
 }
 
-#flex_descr{
+#flex_descr {
     display: flex;
     justify-content: space-between;
     margin-left: 20px;
@@ -103,12 +101,17 @@ nav {
     color: rgb(96, 92, 92);
 }
 
-#title_sacola{
+#title_sacola {
     color: blue;
     font-weight: 700;
     padding: 12px;
 }
 
-.template_sacola{
+.template_sacola {
     display: none;
+}
+
+.total_venda {
+    font-weight: 700;
+    color: red;
 }

@@ -89,6 +89,7 @@ function mostra_template_sacola() {
 
         }
     }
+    alert("A compra foi finalizada!")
 }
 
 function cadastrar() {
@@ -183,7 +184,7 @@ function venda() {
                 sacola.push([lista[i][0], lista[i][1], lista[i][2], lista[i][3], estoque_venda * lista[i][2]])
                 lista[i][3] = lista[i][3] - estoque_venda
                 total += sacola[i][4]
-                total_venda.innerHTML = `${total}`
+                total_venda.innerHTML = `Total da venda: R$${total}`
                 console.log(sacola)
           
             } else {
