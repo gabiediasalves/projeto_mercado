@@ -54,7 +54,7 @@ function mostra_template_venda() {
     }
 }
 var template_sacola = document.querySelector('.template_sacola')
-function mostra_template_sacola () {
+function mostra_template_sacola() {
     if (template_sacola.style.display === 'block') {
         template_sacola.style.display = 'none'
         carouselExampleIndicators.style.display = 'block'
@@ -142,9 +142,11 @@ var mostra_produto_venda = () => {
 var total = 0
 var total_venda = document.querySelector('.total_venda')
 var sacola = []
+var cont = 0
 function venda() {
     var prod_select = x.selectedIndex;
     var estoque_venda = document.querySelector('#estoque_venda').value
+
     for (let i = 0; i < lista.length; i++) {
         if (prod_select == lista[i][0]) {
             if (estoque_venda <= lista[i][3] && estoque_venda > 0) {
@@ -166,16 +168,17 @@ function venda() {
     var cell2 = row.insertCell(1)
     var cell3 = row.insertCell(2)
     cell1.innerHTML = `Qnt.${estoque_venda}`
-    cell2.innerHTML = `Uni R$${sacola[i][2]}`
-    cell3.innerHTML = ` - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Total R$${sacola[i][4]}`
+    cell2.innerHTML = `Uni R$${sacola[cont][2]}`
+    cell3.innerHTML = ` - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Total R$${sacola[cont][4]}`
 
     var row = table_t.insertRow(1)
     var cell1 = row.insertCell(0)
     var cell2 = row.insertCell(1)
     var cell3 = row.insertCell(2)
-    cell1.innerHTML = `Produto ${sacola[i][1]}`
+    cell1.innerHTML = `Produto ${sacola[cont][1]}`
     cell2.innerHTML = ``
     cell3.innerHTML = ``
-}
+    cont++
 
+}
 
